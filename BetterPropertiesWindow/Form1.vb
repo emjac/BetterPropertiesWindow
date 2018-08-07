@@ -135,11 +135,17 @@ Public Class Form1
         CopyNodesAsTable()
     End Sub
 
+    Private Sub CopyBeamNumButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles CopyBeamNumButton.Click
+        CopyBeamsAsTable()
+    End Sub
+
     Private Sub ButtonBump_Click(sender As Object, e As EventArgs) Handles BumpButton.Click
         BeamBumper()
     End Sub
 
     Private Sub BeamBumper()
+
+        'Increases the weight of selected sections to the next weight in their depth classbim
 
         Dim i As Integer
         Dim SelBeamsNo As Long
@@ -213,13 +219,35 @@ Public Class Form1
             ReDim SelNodes(SelNodesNo - 1)
             geo.GetSelectedNodes(SelNodes, 1)
 
-            Dim DataObj As New DataObject
-
             For i = 0 To SelNodesNo - 1
                 NodeString = NodeString & (SelNodes(i)) & vbCrLf
             Next
 
             Clipboard.SetText(NodeString)
+
+        End If
+
+    End Sub
+
+    Private Sub CopyBeamsAsTable()
+
+        'Copies the element numbers for the beams that are selected to the clipboard
+
+        Dim SelBeamsNo As Long
+        SelBeamsNo = geo.GetNoOfSelectedBeams
+        Dim SelBeams() As Integer
+        Dim BeamString As String = ""
+
+        If SelBeamsNo > 0 Then
+
+            ReDim SelBeams(SelBeamsNo - 1)
+            geo.GetSelectedBeams(SelBeams, 1)
+
+            For i = 0 To SelBeamsNo - 1
+                BeamString = BeamString & (SelBeams(i)) & vbCrLf
+            Next i
+
+            Clipboard.SetText(BeamString)
 
         End If
 

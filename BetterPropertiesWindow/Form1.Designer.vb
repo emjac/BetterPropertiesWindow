@@ -86,7 +86,7 @@ Partial Class Form1
         Me.CopyNodeNumButton.Location = New System.Drawing.Point(8, 376)
         Me.CopyNodeNumButton.Margin = New System.Windows.Forms.Padding(2)
         Me.CopyNodeNumButton.Name = "CopyNodeNumButton"
-        Me.CopyNodeNumButton.Size = New System.Drawing.Size(158, 22)
+        Me.CopyNodeNumButton.Size = New System.Drawing.Size(160, 22)
         Me.CopyNodeNumButton.TabIndex = 12
         Me.CopyNodeNumButton.Text = "Copy Node Numbers As Table"
         Me.CopyNodeNumButton.UseVisualStyleBackColor = True
@@ -96,7 +96,7 @@ Partial Class Form1
         Me.CopyBeamNumButton.Location = New System.Drawing.Point(8, 408)
         Me.CopyBeamNumButton.Margin = New System.Windows.Forms.Padding(2)
         Me.CopyBeamNumButton.Name = "CopyBeamNumButton"
-        Me.CopyBeamNumButton.Size = New System.Drawing.Size(158, 22)
+        Me.CopyBeamNumButton.Size = New System.Drawing.Size(160, 22)
         Me.CopyBeamNumButton.TabIndex = 13
         Me.CopyBeamNumButton.Text = "Copy Beam Numbers As Table"
         Me.CopyBeamNumButton.UseVisualStyleBackColor = True
