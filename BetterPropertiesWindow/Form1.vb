@@ -20,7 +20,7 @@ Public Class Form1
 
     Private Sub LoadDataIntoDataGridView()
 
-        With DataGridView1
+        With SectonDataGridView
 
             Dim dProp = New DataTable
             Dim dRow As DataRow
@@ -73,11 +73,11 @@ Public Class Form1
 
         End With
 
-        Dim colRef As DataGridViewColumn = DataGridView1.Columns(0)
-        Dim colSec As DataGridViewColumn = DataGridView1.Columns(1)
-        Dim colMat As DataGridViewColumn = DataGridView1.Columns(2)
-        Dim colIz As DataGridViewColumn = DataGridView1.Columns(3)
-        Dim colZz As DataGridViewColumn = DataGridView1.Columns(4)
+        Dim colRef As DataGridViewColumn = SectonDataGridView.Columns(0)
+        Dim colSec As DataGridViewColumn = SectonDataGridView.Columns(1)
+        Dim colMat As DataGridViewColumn = SectonDataGridView.Columns(2)
+        Dim colIz As DataGridViewColumn = SectonDataGridView.Columns(3)
+        Dim colZz As DataGridViewColumn = SectonDataGridView.Columns(4)
 
         colRef.Width = 40
         colSec.Width = 125
@@ -88,11 +88,11 @@ Public Class Form1
         bSec = prop.GetSectionPropertyList(lSectionRefs)
     End Sub
 
-    Private Sub DataGridView(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+    Private Sub DataGridView(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles SectonDataGridView.CellClick
 
         If Not e.RowIndex = -1 Then
 
-            Dim oValue As Object = DataGridView1.Rows(e.RowIndex).Cells(0).Value
+            Dim oValue As Object = SectonDataGridView.Rows(e.RowIndex).Cells(0).Value
 
             Dim iChk As Boolean = CheckBox1.Checked
 
@@ -113,7 +113,7 @@ Public Class Form1
         'comment
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub AssignToSelectedButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles AssignToSelectedButton.Click
 
         Dim lRef As Long
         Dim SelBeamsCnt As Long
@@ -123,7 +123,7 @@ Public Class Form1
         Dim SelBeams(SelBeamsCnt - 1) As Integer
         geo.GetSelectedBeams(SelBeams, 1)
 
-        lRef = DataGridView1.CurrentRow.Cells(0).Value
+        lRef = SectonDataGridView.CurrentRow.Cells(0).Value
 
         prop.AssignBeamProperty(SelBeams, lRef)
 
@@ -131,8 +131,12 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub CopyNodeNumButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles CopyNodeNumButton.Click
+        CopyNodesAsTable()
+    End Sub
 
+    Private Sub ButtonBump_Click(sender As Object, e As EventArgs) Handles BumpButton.Click
+        BeamBumper()
     End Sub
 
     Private Sub BeamBumper()
@@ -197,8 +201,30 @@ Public Class Form1
 
     End Sub
 
-    Private Sub ButtonBump_Click(sender As Object, e As EventArgs) Handles ButtonBump.Click
-        BeamBumper()
+    Private Sub CopyNodesAsTable()
+
+        'Copies the node numbers for the nodes that are selected to the clipboard
+
+        Dim SelNodesNo As Long = geo.GetNoOfSelectedNodes
+        Dim SelNodes() As Integer
+        Dim NodeString As String = ""
+
+        If SelNodesNo > 0 Then
+            ReDim SelNodes(SelNodesNo - 1)
+            geo.GetSelectedNodes(SelNodes, 1)
+
+            Dim DataObj As New DataObject
+
+            For i = 0 To SelNodesNo - 1
+                NodeString = NodeString & (SelNodes(i)) & vbCrLf
+            Next
+
+            Clipboard.SetText(NodeString)
+
+        End If
+
     End Sub
+
 End Class
+
 
