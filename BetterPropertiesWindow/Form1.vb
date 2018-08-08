@@ -2,7 +2,6 @@
 Public Class Form1
 
     Dim std As Object = GetObject(, "StaadPro.OpenSTAAD")
-
     Dim prop As OpenSTAADUI.OSPropertyUI = std.Property
     Dim geo As OpenSTAADUI.OSGeometryUI = std.Geometry
 
@@ -12,58 +11,64 @@ Public Class Form1
 
     Private Sub Form1_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Activated
 
-        Me.TopMost = True
 
-        LoadDataIntoDataGridView()
 
     End Sub
 
-    Private Sub LoadDataIntoDataGridView()
+    Private Sub FirstLoadDataGridView()
 
         With SectonDataGridView
 
-            Dim dProp = New DataTable
+            Dim dData As DataSet = New DataSet
+            Dim dProp As DataTable = New DataTable
+
+            dProp.Columns.Add("Ref", GetType(Double))
+            dProp.Columns.Add("Section", GetType(String))
+            dProp.Columns.Add("Material", GetType(String))
+            dProp.Columns.Add("Iz", GetType(Double))
+            dProp.Columns.Add("Zz", GetType(Double))
+
+            LoadPropertiesTable(dProp)
+
+        End With
+
+        FormatGridView()
+
+    End Sub
+
+    Private Sub RefreshPropertiesTable()
+
+        With SectonDataGridView
+
+            Dim dProp As DataTable = New DataTable
+
+            dProp = .DataSource
+            dProp.Rows.Clear()
+
+            LoadPropertiesTable(dProp)
+
+        End With
+
+    End Sub
+
+    Private Sub LoadPropertiesTable(dProp As DataTable)
+
+        With SectonDataGridView
+
             Dim dRow As DataRow
-            Dim lBeamList() As Integer
-            Dim bSec As Boolean
-            Dim width As Double
-            Dim depth As Double
-            Dim Ix As Double
-            Dim Iy As Double
-            Dim Iz As Double
-            Dim Ax As Double
-            Dim Ay As Double
-            Dim Az As Double
             Dim lSectionCnt As Long = prop.GetSectionPropertyCount()
 
-            .Width = 380
-
-            dProp.Columns.Add("Ref")
-            dProp.Columns.Add("Section")
-            dProp.Columns.Add("Material")
-            dProp.Columns.Add("Iz")
-            dProp.Columns.Add("Zz")
-
             For lSec As Long = 1 To lSectionCnt
-                dRow = dProp.NewRow()
-                dRow("Ref") = lSec
-                dRow("Section") = "s"
 
+                dRow = dProp.NewRow()
+
+                dRow("Ref") = lSec
+                dRow("Section") = ""
                 prop.GetSectionPropertyName(lSec, dRow("Section"))
                 prop.GetSectionPropertyAssignedBeamCount(lSec)
-
-                ReDim lBeamList(0 To prop.GetSectionPropertyAssignedBeamCount(lSec) - 1)
-
-                If Not lBeamList.Length = 0 Then
-                    bSec = prop.GetSectionPropertyAssignedBeamList(lSec, lBeamList)
-                    dRow("Material") = prop.GetBeamMaterialName(lBeamList(0))
-                    dRow("Iz") = prop.GetBeamProperty(lBeamList(0), width, depth, Ax, Ay, Az, Ix, Iy, Iz)
-                    If Not Ax = 0 Then
-                        Dim Zz As Long = Math.Round(Iz / Az)
-                        dRow("Iz") = Iz
-                        dRow("Zz") = Zz
-                    End If
-                End If
+                dRow("Material") = GetSectionMaterial(lSec)
+                dRow("Iz") = GetSectionProperty(lSec, "Iz")
+                dRow("Zz") = Math.Round(GetSectionProperty(lSec, "Iz") / GetSectionProperty(lSec, "Az"))
 
                 dProp.Rows.Add(dRow)
 
@@ -72,6 +77,12 @@ Public Class Form1
             .DataSource = dProp
 
         End With
+
+    End Sub
+
+    Private Sub FormatGridView()
+
+        SectonDataGridView.Width = 380
 
         Dim colRef As DataGridViewColumn = SectonDataGridView.Columns(0)
         Dim colSec As DataGridViewColumn = SectonDataGridView.Columns(1)
@@ -85,8 +96,70 @@ Public Class Form1
         colIz.Width = 50
         colZz.Width = 50
 
-        bSec = prop.GetSectionPropertyList(lSectionRefs)
     End Sub
+
+
+    Private Function GetSectionMaterial(lSection As Long) As String
+        'Returns material property of a beam
+
+        Dim lBeamList() As Integer
+        Dim sReturn As String = ""
+
+        ReDim lBeamList(0 To prop.GetSectionPropertyAssignedBeamCount(lSection) - 1)
+
+        If Not lBeamList.Length = 0 Then
+            prop.GetSectionPropertyAssignedBeamList(lSection, lBeamList)
+            Return (prop.GetBeamMaterialName(lBeamList(0)))
+        Else
+            Return ("")
+        End If
+
+    End Function
+
+    Private Function GetSectionProperty(lSection As Long, sName As String) As Double
+
+        'Takes section reference number and string containing name of property request eg. "Ix" and returns value of Ix
+
+        Dim width As Double
+        Dim depth As Double
+        Dim Ix As Double
+        Dim Iy As Double
+        Dim Iz As Double
+        Dim Ax As Double
+        Dim Ay As Double
+        Dim Az As Double
+        Dim Tf As Double
+        Dim Tw As Double
+
+        prop.GetSectionPropertyValues(lSection, width, depth, Ax, Ay, Az, Ix, Iy, Iz, Tf, Tw)
+
+        Select Case sName
+            Case "width"
+                Return (width)
+            Case "depth"
+                Return (depth)
+            Case "Ax"
+                Return (Ax)
+            Case "Ay"
+                Return (Ay)
+            Case "Az"
+                Return (Az)
+            Case "Ix"
+                Return (Ix)
+            Case "Iy"
+                Return (Iy)
+            Case "Iz"
+                Return (Iz)
+            Case "Tf"
+                Return (Tf)
+            Case "Tw"
+                Return (Tw)
+            Case Else
+                Return (vbNull)
+        End Select
+
+    End Function
+
 
     Private Sub DataGridView(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles SectonDataGridView.CellClick
 
@@ -110,7 +183,11 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'comment
+
+        Me.TopMost = True
+
+        FirstLoadDataGridView()
+
     End Sub
 
     Private Sub AssignToSelectedButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles AssignToSelectedButton.Click
@@ -127,7 +204,7 @@ Public Class Form1
 
         prop.AssignBeamProperty(SelBeams, lRef)
 
-        LoadDataIntoDataGridView()
+        RefreshPropertiesTable()
 
     End Sub
 
@@ -141,6 +218,7 @@ Public Class Form1
 
     Private Sub ButtonBump_Click(sender As Object, e As EventArgs) Handles BumpButton.Click
         BeamBumper()
+        RefreshPropertiesTable()
     End Sub
 
     Private Sub BeamBumper()
@@ -203,8 +281,6 @@ Public Class Form1
 
         End If
 
-        LoadDataIntoDataGridView()
-
     End Sub
 
     Private Sub CopyNodesAsTable()
@@ -253,6 +329,24 @@ Public Class Form1
 
     End Sub
 
+    Private Sub AddButton_Click(sender As Object, e As EventArgs) Handles AddButton.Click
+
+    End Sub
+
+    Private Sub CheckBox8_CheckedChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
+        Dim lRef As Long
+        lRef = SectonDataGridView.CurrentRow.Cells(0).Value
+        prop.DeleteProperty(lRef)
+        RefreshPropertiesTable()
+    End Sub
 End Class
 
 
