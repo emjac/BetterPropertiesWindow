@@ -24,29 +24,91 @@ Public Class Form1
 
             dProp.Columns.Add("Ref", GetType(Double))
             dProp.Columns.Add("Section", GetType(String))
-            dProp.Columns.Add("Material", GetType(String))
-
 
             Dim MaterialComboBoxColumn As DataGridViewComboBoxColumn = New DataGridViewComboBoxColumn()
-            MaterialComboBoxColumn.Name = "Location"
-            MaterialComboBoxColumn.ValueType = GetType(String)
-            DataSource = dtLocations
+            Dim tabMat As DataTable = New DataTable
 
+            tabMat.Columns.Add("IDMat", GetType(Integer))
+            tabMat.Columns.Add("MaterialName", GetType(String))
 
-            dgvPickList.Columns.RemoveAt(1)
-            dgvPickList.Columns.Insert(1, comboBoxColumn)
+            Dim rowMat As DataRow
+            Dim sMat As Long
 
+            Dim iMat As Integer = prop.GetIsotropicMaterialCount()
+
+            For i As Integer = 0 To iMat - 1
+
+                rowMat = tabMat.NewRow()
+
+                rowMat("IDMat") = i
+                rowMat("MaterialName") = ""
+                sMat = GetMaterialProperty(i, "E")
+
+                tabMat.Rows.Add(rowMat)
+                MaterialComboBoxColumn.Items.Add(sMat)
+
+            Next
+
+            dProp.Columns.Add("Material", GetType(String))
 
             dProp.Columns.Add("Iz", GetType(Double))
             dProp.Columns.Add("Zz", GetType(Double))
 
             LoadPropertiesTable(dProp)
 
+            .Columns.RemoveAt(2)
+            .Columns.Insert(2, MaterialComboBoxColumn)
+
+            FormatGridView()
+
         End With
 
-        FormatGridView()
-
     End Sub
+
+    Private Function GetMaterialProperty(iMat As Integer, sProperty As String) As Long
+
+        Dim E As String = ""
+        Dim Poisson As String = ""
+        Dim G As String = ""
+        Dim Density As String = ""
+        Dim Alpha As String = ""
+        Dim CrDamp As String = ""
+        Dim Fy As String = ""
+        Dim Fu As String = ""
+        Dim Ry As String = ""
+        Dim Rt As String = ""
+        Dim Fcu As String = ""
+
+        prop.GetIsotropicMaterialPropertiesEx(iMat, E, Poisson, G, Density, Alpha, CrDamp, Fy, Fu, Ry, Rt, Fcu)
+
+        Select Case sProperty
+            Case "E"
+                Return (E)
+            Case "Poisson"
+                Return (Poisson)
+            Case "G"
+                Return (G)
+            Case "Density"
+                Return (Density)
+            Case Alpha
+                Return (Alpha)
+            Case CrDamp
+                Return (CrDamp)
+            Case "Fy"
+                Return (Fy)
+            Case "Fu"
+                Return (Fu)
+            Case "Ry"
+                Return (Ry)
+            Case "Rt"
+                Return (Rt)
+            Case "Fcu"
+                Return (Fcu)
+            Case Else
+                Return ("")
+        End Select
+
+    End Function
 
     Private Sub RefreshPropertiesTable()
 
