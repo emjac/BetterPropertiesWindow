@@ -6,6 +6,7 @@ Public Class Form1
     Dim geo As OpenSTAADUI.OSGeometryUI = std.Geometry
 
 
+
     Dim lSectionRefs As Long
     Dim bSec As Boolean
 
@@ -98,7 +99,6 @@ Public Class Form1
 
     End Sub
 
-
     Private Function GetSectionMaterial(lSection As Long) As String
         'Returns material property of a beam
 
@@ -160,7 +160,6 @@ Public Class Form1
 
     End Function
 
-
     Private Sub DataGridView(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles SectonDataGridView.CellClick
 
         If Not e.RowIndex = -1 Then
@@ -185,6 +184,12 @@ Public Class Form1
     Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         Me.TopMost = True
+
+        Dim sFileName As String = ""
+
+        std.GetSTAADFile(sFileName, True)
+
+        TextBox1.Text = sFileName
 
         FirstLoadDataGridView()
 
@@ -333,20 +338,13 @@ Public Class Form1
 
     End Sub
 
-    Private Sub CheckBox8_CheckedChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
-
     Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
         Dim lRef As Long
         lRef = SectonDataGridView.CurrentRow.Cells(0).Value
         prop.DeleteProperty(lRef)
         RefreshPropertiesTable()
     End Sub
+
 End Class
 
 

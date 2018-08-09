@@ -40,10 +40,10 @@ Partial Class Form1
         '
         'AssignToSelectedButton
         '
-        Me.AssignToSelectedButton.Location = New System.Drawing.Point(210, 402)
-        Me.AssignToSelectedButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.AssignToSelectedButton.Location = New System.Drawing.Point(420, 773)
+        Me.AssignToSelectedButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.AssignToSelectedButton.Name = "AssignToSelectedButton"
-        Me.AssignToSelectedButton.Size = New System.Drawing.Size(161, 21)
+        Me.AssignToSelectedButton.Size = New System.Drawing.Size(322, 40)
         Me.AssignToSelectedButton.TabIndex = 5
         Me.AssignToSelectedButton.Text = "Assign To Selected Beams"
         Me.AssignToSelectedButton.UseVisualStyleBackColor = True
@@ -51,10 +51,10 @@ Partial Class Form1
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(11, 331)
-        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(2)
+        Me.CheckBox1.Location = New System.Drawing.Point(22, 637)
+        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(147, 17)
+        Me.CheckBox1.Size = New System.Drawing.Size(290, 29)
         Me.CheckBox1.TabIndex = 6
         Me.CheckBox1.Text = "Highlight Selected Beams"
         Me.CheckBox1.UseVisualStyleBackColor = True
@@ -68,105 +68,111 @@ Partial Class Form1
         Me.SectonDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
         Me.SectonDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.SectonDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.SectonDataGridView.Location = New System.Drawing.Point(11, 36)
-        Me.SectonDataGridView.Margin = New System.Windows.Forms.Padding(2)
+        Me.SectonDataGridView.Location = New System.Drawing.Point(22, 69)
+        Me.SectonDataGridView.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.SectonDataGridView.MultiSelect = False
         Me.SectonDataGridView.Name = "SectonDataGridView"
         Me.SectonDataGridView.ReadOnly = True
         Me.SectonDataGridView.RowHeadersVisible = False
         Me.SectonDataGridView.RowTemplate.Height = 33
         Me.SectonDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.SectonDataGridView.Size = New System.Drawing.Size(360, 291)
+        Me.SectonDataGridView.Size = New System.Drawing.Size(720, 560)
         Me.SectonDataGridView.TabIndex = 3
         '
         'BumpButton
         '
-        Me.BumpButton.Location = New System.Drawing.Point(14, 434)
-        Me.BumpButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.BumpButton.Location = New System.Drawing.Point(28, 835)
+        Me.BumpButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BumpButton.Name = "BumpButton"
-        Me.BumpButton.Size = New System.Drawing.Size(125, 21)
+        Me.BumpButton.Size = New System.Drawing.Size(250, 40)
         Me.BumpButton.TabIndex = 11
         Me.BumpButton.Text = "Bump Sections"
         Me.BumpButton.UseVisualStyleBackColor = True
         '
         'CopyNodeNumButton
         '
-        Me.CopyNodeNumButton.Location = New System.Drawing.Point(15, 459)
-        Me.CopyNodeNumButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.CopyNodeNumButton.Location = New System.Drawing.Point(30, 883)
+        Me.CopyNodeNumButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.CopyNodeNumButton.Name = "CopyNodeNumButton"
-        Me.CopyNodeNumButton.Size = New System.Drawing.Size(160, 21)
+        Me.CopyNodeNumButton.Size = New System.Drawing.Size(320, 40)
         Me.CopyNodeNumButton.TabIndex = 12
         Me.CopyNodeNumButton.Text = "Copy Node Numbers As Table"
         Me.CopyNodeNumButton.UseVisualStyleBackColor = True
         '
         'CopyBeamNumButton
         '
-        Me.CopyBeamNumButton.Location = New System.Drawing.Point(14, 484)
-        Me.CopyBeamNumButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.CopyBeamNumButton.Location = New System.Drawing.Point(28, 931)
+        Me.CopyBeamNumButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.CopyBeamNumButton.Name = "CopyBeamNumButton"
-        Me.CopyBeamNumButton.Size = New System.Drawing.Size(160, 21)
+        Me.CopyBeamNumButton.Size = New System.Drawing.Size(320, 40)
         Me.CopyBeamNumButton.TabIndex = 13
         Me.CopyBeamNumButton.Text = "Copy Beam Numbers As Table"
         Me.CopyBeamNumButton.UseVisualStyleBackColor = True
         '
         'DeleteButton
         '
-        Me.DeleteButton.Location = New System.Drawing.Point(274, 349)
+        Me.DeleteButton.Location = New System.Drawing.Point(548, 671)
+        Me.DeleteButton.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.DeleteButton.Name = "DeleteButton"
-        Me.DeleteButton.Size = New System.Drawing.Size(97, 21)
+        Me.DeleteButton.Size = New System.Drawing.Size(194, 40)
         Me.DeleteButton.TabIndex = 14
         Me.DeleteButton.Text = "Delete"
         Me.DeleteButton.UseVisualStyleBackColor = True
         '
         'EditButton
         '
-        Me.EditButton.Location = New System.Drawing.Point(171, 349)
+        Me.EditButton.Location = New System.Drawing.Point(342, 671)
+        Me.EditButton.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.EditButton.Name = "EditButton"
-        Me.EditButton.Size = New System.Drawing.Size(97, 21)
+        Me.EditButton.Size = New System.Drawing.Size(194, 40)
         Me.EditButton.TabIndex = 15
         Me.EditButton.Text = "Edit"
         Me.EditButton.UseVisualStyleBackColor = True
         '
         'AddButton
         '
-        Me.AddButton.Location = New System.Drawing.Point(171, 376)
+        Me.AddButton.Location = New System.Drawing.Point(342, 723)
+        Me.AddButton.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.AddButton.Name = "AddButton"
-        Me.AddButton.Size = New System.Drawing.Size(97, 21)
+        Me.AddButton.Size = New System.Drawing.Size(194, 40)
         Me.AddButton.TabIndex = 16
         Me.AddButton.Text = "Add"
         Me.AddButton.UseVisualStyleBackColor = True
         '
         'DefineButton
         '
-        Me.DefineButton.Location = New System.Drawing.Point(274, 376)
+        Me.DefineButton.Location = New System.Drawing.Point(548, 723)
+        Me.DefineButton.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.DefineButton.Name = "DefineButton"
-        Me.DefineButton.Size = New System.Drawing.Size(97, 21)
+        Me.DefineButton.Size = New System.Drawing.Size(194, 40)
         Me.DefineButton.TabIndex = 17
         Me.DefineButton.Text = "Define"
         Me.DefineButton.UseVisualStyleBackColor = True
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(71, 8)
+        Me.TextBox1.Location = New System.Drawing.Point(167, 15)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(300, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(575, 31)
         Me.TextBox1.TabIndex = 18
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 11)
+        Me.Label1.Location = New System.Drawing.Point(24, 21)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(63, 13)
+        Me.Label1.Size = New System.Drawing.Size(127, 25)
         Me.Label1.TabIndex = 19
         Me.Label1.Text = "Staad File : "
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(389, 516)
+        Me.ClientSize = New System.Drawing.Size(778, 992)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.DefineButton)
@@ -180,7 +186,7 @@ Partial Class Form1
         Me.Controls.Add(Me.AssignToSelectedButton)
         Me.Controls.Add(Me.SectonDataGridView)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "Form1"
         Me.Text = "Awesome Staad Helper"
         CType(Me.SectonDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
