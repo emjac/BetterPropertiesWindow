@@ -4,8 +4,7 @@ Public Class Form1
     Dim std As Object = GetObject(, "StaadPro.OpenSTAAD")
     Dim prop As OpenSTAADUI.OSPropertyUI = std.Property
     Dim geo As OpenSTAADUI.OSGeometryUI = std.Geometry
-
-
+    Dim view As OpenSTAADUI.IOSViewUI = std.View
 
     Dim lSectionRefs As Long
     Dim bSec As Boolean
@@ -26,6 +25,18 @@ Public Class Form1
             dProp.Columns.Add("Ref", GetType(Double))
             dProp.Columns.Add("Section", GetType(String))
             dProp.Columns.Add("Material", GetType(String))
+
+
+            Dim MaterialComboBoxColumn As DataGridViewComboBoxColumn = New DataGridViewComboBoxColumn()
+            MaterialComboBoxColumn.Name = "Location"
+            MaterialComboBoxColumn.ValueType = GetType(String)
+            DataSource = dtLocations
+
+
+            dgvPickList.Columns.RemoveAt(1)
+            dgvPickList.Columns.Insert(1, comboBoxColumn)
+
+
             dProp.Columns.Add("Iz", GetType(Double))
             dProp.Columns.Add("Zz", GetType(Double))
 
@@ -190,6 +201,8 @@ Public Class Form1
         std.GetSTAADFile(sFileName, True)
 
         TextBox1.Text = sFileName
+
+        view.SetModeSectionPage(0, 3, 6)
 
         FirstLoadDataGridView()
 
