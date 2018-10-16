@@ -4,7 +4,7 @@ Public Class Form1
     Dim std As Object = GetObject(, "StaadPro.OpenSTAAD")
     Dim prop As OpenSTAADUI.OSPropertyUI = std.Property
     Dim geo As OpenSTAADUI.OSGeometryUI = std.Geometry
-    Dim view As OpenSTAADUI.IOSViewUI = std.View
+
 
     Dim lSectionRefs As Long
     Dim bSec As Boolean
@@ -24,91 +24,17 @@ Public Class Form1
 
             dProp.Columns.Add("Ref", GetType(Double))
             dProp.Columns.Add("Section", GetType(String))
-
-            Dim MaterialComboBoxColumn As DataGridViewComboBoxColumn = New DataGridViewComboBoxColumn()
-            Dim tabMat As DataTable = New DataTable
-
-            tabMat.Columns.Add("IDMat", GetType(Integer))
-            tabMat.Columns.Add("MaterialName", GetType(String))
-
-            Dim rowMat As DataRow
-            Dim sMat As Long
-
-            Dim iMat As Integer = prop.GetIsotropicMaterialCount()
-
-            For i As Integer = 0 To iMat - 1
-
-                rowMat = tabMat.NewRow()
-
-                rowMat("IDMat") = i
-                rowMat("MaterialName") = ""
-                sMat = GetMaterialProperty(i, "E")
-
-                tabMat.Rows.Add(rowMat)
-                MaterialComboBoxColumn.Items.Add(sMat)
-
-            Next
-
             dProp.Columns.Add("Material", GetType(String))
-
             dProp.Columns.Add("Iz", GetType(Double))
             dProp.Columns.Add("Zz", GetType(Double))
 
             LoadPropertiesTable(dProp)
 
-            .Columns.RemoveAt(2)
-            .Columns.Insert(2, MaterialComboBoxColumn)
-
-            FormatGridView()
-
         End With
 
+        FormatGridView()
+
     End Sub
-
-    Private Function GetMaterialProperty(iMat As Integer, sProperty As String) As Long
-
-        Dim E As String = ""
-        Dim Poisson As String = ""
-        Dim G As String = ""
-        Dim Density As String = ""
-        Dim Alpha As String = ""
-        Dim CrDamp As String = ""
-        Dim Fy As String = ""
-        Dim Fu As String = ""
-        Dim Ry As String = ""
-        Dim Rt As String = ""
-        Dim Fcu As String = ""
-
-        prop.GetIsotropicMaterialPropertiesEx(iMat, E, Poisson, G, Density, Alpha, CrDamp, Fy, Fu, Ry, Rt, Fcu)
-
-        Select Case sProperty
-            Case "E"
-                Return (E)
-            Case "Poisson"
-                Return (Poisson)
-            Case "G"
-                Return (G)
-            Case "Density"
-                Return (Density)
-            Case Alpha
-                Return (Alpha)
-            Case CrDamp
-                Return (CrDamp)
-            Case "Fy"
-                Return (Fy)
-            Case "Fu"
-                Return (Fu)
-            Case "Ry"
-                Return (Ry)
-            Case "Rt"
-                Return (Rt)
-            Case "Fcu"
-                Return (Fcu)
-            Case Else
-                Return ("")
-        End Select
-
-    End Function
 
     Private Sub RefreshPropertiesTable()
 
@@ -172,6 +98,7 @@ Public Class Form1
 
     End Sub
 
+
     Private Function GetSectionMaterial(lSection As Long) As String
         'Returns material property of a beam
 
@@ -233,6 +160,7 @@ Public Class Form1
 
     End Function
 
+
     Private Sub DataGridView(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles SectonDataGridView.CellClick
 
         If Not e.RowIndex = -1 Then
@@ -257,14 +185,6 @@ Public Class Form1
     Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         Me.TopMost = True
-
-        Dim sFileName As String = ""
-
-        std.GetSTAADFile(sFileName, True)
-
-        TextBox1.Text = sFileName
-
-        view.SetModeSectionPage(0, 3, 6)
 
         FirstLoadDataGridView()
 
@@ -413,13 +333,20 @@ Public Class Form1
 
     End Sub
 
+    Private Sub CheckBox8_CheckedChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+    End Sub
+
     Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
         Dim lRef As Long
         lRef = SectonDataGridView.CurrentRow.Cells(0).Value
         prop.DeleteProperty(lRef)
         RefreshPropertiesTable()
     End Sub
-
 End Class
 
 

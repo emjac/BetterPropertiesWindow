@@ -41,7 +41,7 @@ Partial Class Form1
         'AssignToSelectedButton
         '
         Me.AssignToSelectedButton.Location = New System.Drawing.Point(210, 402)
-        Me.AssignToSelectedButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.AssignToSelectedButton.Margin = New System.Windows.Forms.Padding(2)
         Me.AssignToSelectedButton.Name = "AssignToSelectedButton"
         Me.AssignToSelectedButton.Size = New System.Drawing.Size(161, 21)
         Me.AssignToSelectedButton.TabIndex = 5
@@ -52,7 +52,7 @@ Partial Class Form1
         '
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.Location = New System.Drawing.Point(11, 331)
-        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(147, 17)
         Me.CheckBox1.TabIndex = 6
@@ -61,26 +61,28 @@ Partial Class Form1
         '
         'SectonDataGridView
         '
+        Me.SectonDataGridView.AllowUserToAddRows = False
         Me.SectonDataGridView.AllowUserToDeleteRows = False
         Me.SectonDataGridView.AllowUserToResizeRows = False
         Me.SectonDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
         Me.SectonDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
         Me.SectonDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.SectonDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.SectonDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
         Me.SectonDataGridView.Location = New System.Drawing.Point(11, 36)
-        Me.SectonDataGridView.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SectonDataGridView.Margin = New System.Windows.Forms.Padding(2)
+        Me.SectonDataGridView.MultiSelect = False
         Me.SectonDataGridView.Name = "SectonDataGridView"
+        Me.SectonDataGridView.ReadOnly = True
         Me.SectonDataGridView.RowHeadersVisible = False
         Me.SectonDataGridView.RowTemplate.Height = 33
-        Me.SectonDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.SectonDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.SectonDataGridView.Size = New System.Drawing.Size(360, 291)
         Me.SectonDataGridView.TabIndex = 3
         '
         'BumpButton
         '
         Me.BumpButton.Location = New System.Drawing.Point(14, 434)
-        Me.BumpButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BumpButton.Margin = New System.Windows.Forms.Padding(2)
         Me.BumpButton.Name = "BumpButton"
         Me.BumpButton.Size = New System.Drawing.Size(125, 21)
         Me.BumpButton.TabIndex = 11
@@ -90,7 +92,7 @@ Partial Class Form1
         'CopyNodeNumButton
         '
         Me.CopyNodeNumButton.Location = New System.Drawing.Point(15, 459)
-        Me.CopyNodeNumButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.CopyNodeNumButton.Margin = New System.Windows.Forms.Padding(2)
         Me.CopyNodeNumButton.Name = "CopyNodeNumButton"
         Me.CopyNodeNumButton.Size = New System.Drawing.Size(160, 21)
         Me.CopyNodeNumButton.TabIndex = 12
@@ -100,7 +102,7 @@ Partial Class Form1
         'CopyBeamNumButton
         '
         Me.CopyBeamNumButton.Location = New System.Drawing.Point(14, 484)
-        Me.CopyBeamNumButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.CopyBeamNumButton.Margin = New System.Windows.Forms.Padding(2)
         Me.CopyBeamNumButton.Name = "CopyBeamNumButton"
         Me.CopyBeamNumButton.Size = New System.Drawing.Size(160, 21)
         Me.CopyBeamNumButton.TabIndex = 13
@@ -145,9 +147,9 @@ Partial Class Form1
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(84, 8)
+        Me.TextBox1.Location = New System.Drawing.Point(71, 8)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(290, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(300, 20)
         Me.TextBox1.TabIndex = 18
         '
         'Label1
@@ -178,7 +180,7 @@ Partial Class Form1
         Me.Controls.Add(Me.AssignToSelectedButton)
         Me.Controls.Add(Me.SectonDataGridView)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Form1"
         Me.Text = "Awesome Staad Helper"
         CType(Me.SectonDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
