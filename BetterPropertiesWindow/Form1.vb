@@ -9,12 +9,6 @@ Public Class Form1
     Dim lSectionRefs As Long
     Dim bSec As Boolean
 
-    Private Sub Form1_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Activated
-
-
-
-    End Sub
-
     Private Sub CreateDataSet()
 
         Dim dProp As DataTable = New DataTable
@@ -35,12 +29,15 @@ Public Class Form1
 
             prop.GetSectionPropertyName(lSec, SectionName)
 
-            'If SectionName.First() = "W" Then
-
             dRow = dProp.NewRow()
-
             dRow("Ref") = lSec
-            'dRow("Sort") = CDbl((SectionName.Split("X")(0)).Split("W")(1)) + CDbl((SectionName.Split("X")(1)).Split("-")(0)) / 1000
+
+            If SectionName.First() = "W" Then
+
+                dRow("Sort") = CDbl((SectionName.Split("X")(0)).Split("W")(1)) + CDbl((SectionName.Split("X")(1)).Split("-")(0)) / 1000
+
+            End If
+
             dRow("Section") = SectionName
             prop.GetSectionPropertyAssignedBeamCount(lSec)
             dRow("Material") = GetSectionMaterial(lSec)
@@ -49,22 +46,19 @@ Public Class Form1
 
             dProp.Rows.Add(dRow)
 
-            'End If
-
         Next
 
-        DataSet1.Tables.Add("Sections Table")
+        DataSet1.Tables.Clear()
+        DataSet1.Tables.Add(dProp)
+
 
     End Sub
 
-
     Private Sub FirstLoadDataGridView()
 
-
+        CreateDataSet()
 
         LoadPropertiesTable()
-
-
 
         FormatGridView()
 
@@ -117,15 +111,19 @@ Public Class Form1
 
     Private Sub RefreshPropertiesTable()
 
+        CreateDataSet()
 
+        LoadPropertiesTable()
+
+        FilterDataGridView(TextBoxFilter.Text, DataSet1.Tables("Sections Table"))
 
     End Sub
 
-    Private Sub DataGridView(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles SectionDataGridView.CellClick
+    Private Sub DataGridView(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewSection.CellClick
 
         If Not e.RowIndex = -1 Then
 
-            Dim oValue As Object = SectionDataGridView.Rows(e.RowIndex).Cells(0).Value
+            Dim oValue As Object = DataGridViewSection.Rows(e.RowIndex).Cells(0).Value
 
             Dim iChk As Boolean = CheckBox1.Checked
 
@@ -144,7 +142,7 @@ Public Class Form1
 
     Private Sub LoadPropertiesTable()
 
-        SectionDataGridView.DataSource = DataSet1.Tables("Sections Table")
+        DataGridViewSection.DataSource = DataSet1.Tables("Sections Table")
 
     End Sub
 
@@ -153,17 +151,18 @@ Public Class Form1
         Dim dvFilter As DataView = New DataView(dProp)
 
         dvFilter.RowFilter = "Section like '%" + searchString + "%'"
-        SectionDataGridView.DataSource = dvFilter
+        DataGridViewSection.DataSource = dvFilter
+        dvFilter.Sort = "Sort DESC"
 
     End Sub
 
     Private Sub FormatGridView()
 
-        Dim colRef As DataGridViewColumn = SectionDataGridView.Columns(0)
-        Dim colSort As DataGridViewColumn = SectionDataGridView.Columns(2)
-        Dim colSec As DataGridViewColumn = SectionDataGridView.Columns(1)
+        Dim colRef As DataGridViewColumn = DataGridViewSection.Columns(0)
+        Dim colSort As DataGridViewColumn = DataGridViewSection.Columns(2)
+        Dim colSec As DataGridViewColumn = DataGridViewSection.Columns(1)
         'Dim colWeight As DataGridViewColumn = SectonDataGridView.Columns(3)
-        Dim colMat As DataGridViewColumn = SectionDataGridView.Columns(3)
+        Dim colMat As DataGridViewColumn = DataGridViewSection.Columns(3)
         'Dim colIz As DataGridViewColumn = SectonDataGridView.Columns(5)
         'Dim colZz As DataGridViewColumn = SectonDataGridView.Columns(6)
 
@@ -266,7 +265,7 @@ Public Class Form1
         Dim SelBeams(SelBeamsCnt - 1) As Integer
         geo.GetSelectedBeams(SelBeams, 1)
 
-        lRef = SectionDataGridView.CurrentRow.Cells(0).Value
+        lRef = DataGridViewSection.CurrentRow.Cells(0).Value
 
         prop.AssignBeamProperty(SelBeams, lRef)
 
@@ -310,6 +309,7 @@ Public Class Form1
         SelBeamsNo = geo.GetNoOfSelectedBeams
 
         If SelBeamsNo > 0 Then
+
             ReDim SelBeams(SelBeamsNo - 1)
 
             geo.GetSelectedBeams(SelBeams, 1)
@@ -394,16 +394,49 @@ Public Class Form1
 
     End Sub
 
-    Private Sub DeleteButton_Click(sender As Object, e As EventArgs)
-        Dim lRef As Long
-        lRef = SectionDataGridView.CurrentRow.Cells(0).Value
-        prop.DeleteProperty(lRef)
+    Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
+
+        Dim lRef As VariantType
+        Dim iCOunt As Double
+
+        iCOunt = prop.GetSectionPropertyCount()
+
+        lRef = DataGridViewSection.CurrentRow.Cells(0).Value
+        Dim iDeleteSuccess As Integer
+
+        prop.AssignBeamProperty(31122, 398)
+
+        iDeleteSuccess = prop.DeleteProperty(lRef)
+
+        Dim sName As String
+        sName = prop.GetBeamSectionName(31122)
+
+        iCount = prop.GetSectionPropertyCount()
+
+        DataSet1.Tables("Sections Table").Rows(lRef).Delete()
         RefreshPropertiesTable()
+
+
+
+
     End Sub
 
     Private Sub Test(sender As Object, e As EventArgs) Handles TextBoxFilter.TextChanged
 
         FilterDataGridView(TextBoxFilter.Text, DataSet1.Tables("Sections Table"))
+
+    End Sub
+
+    Private Sub ButtonAdd_Click(sender As Object, e As EventArgs) Handles ButtonAdd.Click
+
+        AddSection(TextBoxAdd.Text)
+
+    End Sub
+
+    Private Sub AddSection(sSectionName As String)
+
+        prop.CreateBeamPropertyFromTable(1, sSectionName, "ST", "", "")
+        RefreshPropertiesTable()
 
     End Sub
 
