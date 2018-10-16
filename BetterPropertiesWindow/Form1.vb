@@ -348,6 +348,72 @@ Public Class Form1
 
     End Sub
 
+
+
+
+
+    Private Sub BeamDumper()
+
+        'Decreases the weight of selected W sections to the next lowest weight in their depth class
+
+        Dim i As Integer
+        Dim SelBeamsNo As Long
+        Dim SelBeams() As Integer
+        Dim Country As Long
+        Dim SectionName As String
+        Dim SectionNameBumped As String
+        Dim TypeSpec As Long
+        Dim Ref As Long
+        Dim Mat As String
+        Dim dSectionWeight As Double
+        Dim sSectionWeight As Double
+        Dim X_Pos As Double
+        Dim BumpChk As Boolean
+        Dim SectionClass As String
+
+        Country = 1 ' USA USA!
+        TypeSpec = 0
+
+        SelBeamsNo = geo.GetNoOfSelectedBeams
+
+        If SelBeamsNo > 0 Then
+            ReDim SelBeams(SelBeamsNo - 1)
+
+            geo.GetSelectedBeams(SelBeams, 1)
+
+            For i = 0 To SelBeamsNo - 1
+
+                SectionName = prop.GetBeamSectionName(SelBeams(i))
+
+                Dim ChkW As Boolean = IIf(Strings.Left(SectionName, 1) = "W", True, False)
+
+                If ChkW Then 'Zero for ST  Sections
+                    BumpChk = 0
+
+                    X_Pos = InStr(SectionName, "X")
+                    sSectionWeight = Strings.Right(SectionName, Strings.Len(SectionName) - X_Pos)
+                    dSectionWeight = Convert.ToDouble(sSectionWeight)
+                    SectionClass = Strings.Left(SectionName, X_Pos)
+                    Mat = prop.GetBeamMaterialName(SelBeams(i))
+
+                    While Not BumpChk
+
+                        dSectionWeight = dSectionWeight - 1
+                        SectionNameBumped = Trim(SectionClass & CStr(dSectionWeight))
+                        Ref = prop.CreateBeamPropertyFromTable(Country, SectionNameBumped, TypeSpec, 0.0, 0.0)
+                        BumpChk = prop.AssignBeamProperty(SelBeams(i), Ref)
+                        prop.AssignMaterialToMember(Mat, SelBeams(i))
+
+                    End While
+
+                End If
+
+            Next i
+
+        End If
+
+    End Sub
+
     Private Sub CopyNodesAsTable()
 
         'Copies the node numbers for the nodes that are selected to the clipboard
