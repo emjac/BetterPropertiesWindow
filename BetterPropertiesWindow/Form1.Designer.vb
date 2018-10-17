@@ -32,14 +32,16 @@ Partial Class Form1
         Me.TextBoxFileName = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBoxFilter = New System.Windows.Forms.TextBox()
-        Me.DataSet1 = New System.Data.DataSet()
+        Me.DataSetStaadProperties = New System.Data.DataSet()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DeleteButton = New System.Windows.Forms.Button()
         Me.ButtonAdd = New System.Windows.Forms.Button()
         Me.TextBoxAdd = New System.Windows.Forms.TextBox()
         Me.LabelAdd = New System.Windows.Forms.Label()
+        Me.DataSetAISCProperties = New System.Data.DataSet()
         CType(Me.DataGridViewSection, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataSetStaadProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataSetAISCProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AssignToSelectedButton
@@ -105,9 +107,9 @@ Partial Class Form1
         resources.ApplyResources(Me.TextBoxFilter, "TextBoxFilter")
         Me.TextBoxFilter.Name = "TextBoxFilter"
         '
-        'DataSet1
+        'DataSetStaadProperties
         '
-        Me.DataSet1.DataSetName = "NewDataSet"
+        Me.DataSetStaadProperties.DataSetName = "NewDataSet"
         '
         'Label2
         '
@@ -136,6 +138,10 @@ Partial Class Form1
         resources.ApplyResources(Me.LabelAdd, "LabelAdd")
         Me.LabelAdd.Name = "LabelAdd"
         '
+        'DataSetAISCProperties
+        '
+        Me.DataSetAISCProperties.DataSetName = "NewDataSet"
+        '
         'Form1
         '
         resources.ApplyResources(Me, "$this")
@@ -158,7 +164,8 @@ Partial Class Form1
         Me.MaximizeBox = False
         Me.Name = "Form1"
         CType(Me.DataGridViewSection, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataSetStaadProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataSetAISCProperties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -180,10 +187,11 @@ Partial Class Form1
     Friend WithEvents TextBoxFileName As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBoxFilter As TextBox
-    Friend WithEvents DataSet1 As DataSet
+    Friend WithEvents DataSetStaadProperties As DataSet
     Friend WithEvents Label2 As Label
     Friend WithEvents DeleteButton As Button
     Friend WithEvents ButtonAdd As Button
     Friend WithEvents TextBoxAdd As TextBox
     Friend WithEvents LabelAdd As Label
+    Friend WithEvents DataSetAISCProperties As DataSet
 End Class

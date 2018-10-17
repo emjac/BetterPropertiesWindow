@@ -1,4 +1,6 @@
 ﻿
+Imports System.Data.OleDb
+
 Public Class Form1
 
     Dim std As Object = GetObject(, "StaadPro.OpenSTAAD")
@@ -48,8 +50,8 @@ Public Class Form1
 
         Next
 
-        DataSet1.Tables.Clear()
-        DataSet1.Tables.Add(dProp)
+        DataSetStaadProperties.Tables.Clear()
+        DataSetStaadProperties.Tables.Add(dProp)
 
 
     End Sub
@@ -115,7 +117,7 @@ Public Class Form1
 
         LoadPropertiesTable()
 
-        FilterDataGridView(TextBoxFilter.Text, DataSet1.Tables("Sections Table"))
+        FilterDataGridView(TextBoxFilter.Text, DataSetStaadProperties.Tables("Sections Table"))
 
     End Sub
 
@@ -142,7 +144,7 @@ Public Class Form1
 
     Private Sub LoadPropertiesTable()
 
-        DataGridViewSection.DataSource = DataSet1.Tables("Sections Table")
+        DataGridViewSection.DataSource = DataSetStaadProperties.Tables("Sections Table")
 
     End Sub
 
@@ -348,112 +350,112 @@ Public Class Form1
 
     End Sub
 
-    Private Sub GetAISCDataBase()
+    'Private Sub GetAISCDataBase()
 
-        Dim sSheetName As String = ""
-        Dim sConnection As String
-        Dim dtTablesList As DataTable
-        Dim oleExcelCommand As OleDbCommand
-        Dim oleExcelReader As OleDbDataReader
-        Dim oleExcelConnection As OleDbConnection
+    '    Dim sSheetName As String = ""
+    '    Dim sConnection As String
+    '    Dim dtTablesList As DataTable
+    '    Dim oleExcelCommand As OleDbCommand
+    '    Dim oleExcelReader As OleDbDataReader
+    '    Dim oleExcelConnection As OleDbConnection
 
-        sConnection = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\C:\Users\ejacobsen\Google Drive\LeM\Spreadsheets\Templatesaisc-shapes-database-v15.0.xlsx;Extended Properties=""Excel 12.0;HDR=No;IMEX=1"""
+    '    sConnection = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\C:\Users\ejacobsen\Google Drive\LeM\Spreadsheets\Templatesaisc-shapes-database-v15.0.xlsx;Extended Properties=""Excel 12.0;HDR=No;IMEX=1"""
 
-        oleExcelConnection = New OleDbConnection(sConnection)
-        oleExcelConnection.Open()
+    '    oleExcelConnection = New OleDbConnection(sConnection)
+    '    oleExcelConnection.Open()
 
-        dtTablesList = oleExcelConnection.GetSchema("Tables")
+    '    dtTablesList = oleExcelConnection.GetSchema("Tables")
 
-        If dtTablesList.Rows.Count > 0 Then
-            sSheetName = dtTablesList.Rows(0)("TABLE_NAME").ToString
-        End If
+    '    If dtTablesList.Rows.Count > 0 Then
+    '        sSheetName = dtTablesList.Rows(0)("TABLE_NAME").ToString
+    '    End If
 
-        dtTablesList.Clear()
-        dtTablesList.Dispose()
+    '    dtTablesList.Clear()
+    '    dtTablesList.Dispose()
 
-        If sSheetName <> "" Then
+    '    If sSheetName <> "" Then
 
-            oleExcelCommand = oleExcelConnection.CreateCommand()
-            oleExcelCommand.CommandText = "Select * From [" & sSheetName & "]"
-            oleExcelCommand.CommandType = CommandType.Text
+    '        oleExcelCommand = oleExcelConnection.CreateCommand()
+    '        oleExcelCommand.CommandText = "Select * From [" & sSheetName & "]"
+    '        oleExcelCommand.CommandType = CommandType.Text
 
-            oleExcelReader = oleExcelCommand.ExecuteReader
+    '        oleExcelReader = oleExcelCommand.ExecuteReader
 
-            Dim nOutputRow As Double = 0
+    '        Dim nOutputRow As Double = 0
 
-            While oleExcelReader.Read
+    '        While oleExcelReader.Read
 
-            End While
+    '        End While
 
-            oleExcelReader.Close()
+    '        oleExcelReader.Close()
 
-        End If
+    '    End If
 
-        oleExcelConnection.Close()
+    '    oleExcelConnection.Close()
 
-    End Sub
+    'End Sub
 
-    Private Sub BeamDumper()
+    'Private Sub BeamDumper()
 
-        'Decreases the weight of selected W sections to the next lowest weight in their depth class
+    '    'Decreases the weight of selected W sections to the next lowest weight in their depth class
 
-        Dim i As Integer
-        Dim SelBeamsNo As Long
-        Dim SelBeams() As Integer
-        Dim Country As Long
-        Dim SectionName As String
-        Dim SectionNameBumped As String
-        Dim TypeSpec As Long
-        Dim Ref As Long
-        Dim Mat As String
-        Dim dSectionWeight As Double
-        Dim sSectionWeight As Double
-        Dim X_Pos As Double
-        Dim BumpChk As Boolean
-        Dim SectionClass As String
+    '    Dim i As Integer
+    '    Dim SelBeamsNo As Long
+    '    Dim SelBeams() As Integer
+    '    Dim Country As Long
+    '    Dim SectionName As String
+    '    Dim SectionNameBumped As String
+    '    Dim TypeSpec As Long
+    '    Dim Ref As Long
+    '    Dim Mat As String
+    '    Dim dSectionWeight As Double
+    '    Dim sSectionWeight As Double
+    '    Dim X_Pos As Double
+    '    Dim BumpChk As Boolean
+    '    Dim SectionClass As String
 
-        Country = 1 ' USA USA!
-        TypeSpec = 0
+    '    Country = 1 ' USA USA!
+    '    TypeSpec = 0
 
-        SelBeamsNo = geo.GetNoOfSelectedBeams
+    '    SelBeamsNo = geo.GetNoOfSelectedBeams
 
-        If SelBeamsNo > 0 Then
-            ReDim SelBeams(SelBeamsNo - 1)
+    '    If SelBeamsNo > 0 Then
+    '        ReDim SelBeams(SelBeamsNo - 1)
 
-            geo.GetSelectedBeams(SelBeams, 1)
+    '        geo.GetSelectedBeams(SelBeams, 1)
 
-            For i = 0 To SelBeamsNo - 1
+    '        For i = 0 To SelBeamsNo - 1
 
-                SectionName = prop.GetBeamSectionName(SelBeams(i))
+    '            SectionName = prop.GetBeamSectionName(SelBeams(i))
 
-                Dim ChkW As Boolean = IIf(Strings.Left(SectionName, 1) = "W", True, False)
+    '            Dim ChkW As Boolean = IIf(Strings.Left(SectionName, 1) = "W", True, False)
 
-                If ChkW Then 'Zero for ST  Sections
-                    BumpChk = 0
+    '            If ChkW Then 'Zero for ST  Sections
+    '                BumpChk = 0
 
-                    X_Pos = InStr(SectionName, "X")
-                    sSectionWeight = Strings.Right(SectionName, Strings.Len(SectionName) - X_Pos)
-                    dSectionWeight = Convert.ToDouble(sSectionWeight)
-                    SectionClass = Strings.Left(SectionName, X_Pos)
-                    Mat = prop.GetBeamMaterialName(SelBeams(i))
+    '                X_Pos = InStr(SectionName, "X")
+    '                sSectionWeight = Strings.Right(SectionName, Strings.Len(SectionName) - X_Pos)
+    '                dSectionWeight = Convert.ToDouble(sSectionWeight)
+    '                SectionClass = Strings.Left(SectionName, X_Pos)
+    '                Mat = prop.GetBeamMaterialName(SelBeams(i))
 
-                    While Not BumpChk
+    '                While Not BumpChk
 
-                        dSectionWeight = dSectionWeight - 1
-                        SectionNameBumped = Trim(SectionClass & CStr(dSectionWeight))
-                        Ref = prop.CreateBeamPropertyFromTable(Country, SectionNameBumped, TypeSpec, 0.0, 0.0)
-                        BumpChk = prop.AssignBeamProperty(SelBeams(i), Ref)
-                        prop.AssignMaterialToMember(Mat, SelBeams(i))
+    '                    dSectionWeight = dSectionWeight - 1
+    '                    SectionNameBumped = Trim(SectionClass & CStr(dSectionWeight))
+    '                    Ref = prop.CreateBeamPropertyFromTable(Country, SectionNameBumped, TypeSpec, 0.0, 0.0)
+    '                    BumpChk = prop.AssignBeamProperty(SelBeams(i), Ref)
+    '                    prop.AssignMaterialToMember(Mat, SelBeams(i))
 
-                    End While
+    '                End While
 
-                End If
+    '            End If
 
-            Next i
+    '        Next i
 
-        End If
+    '    End If
 
-    End Sub
+    'End Sub
 
     Private Sub CopyNodesAsTable()
 
@@ -518,9 +520,9 @@ Public Class Form1
         Dim sName As String
         sName = prop.GetBeamSectionName(31122)
 
-        iCount = prop.GetSectionPropertyCount()
+        iCOunt = prop.GetSectionPropertyCount()
 
-        DataSet1.Tables("Sections Table").Rows(lRef).Delete()
+        DataSetStaadProperties.Tables("Sections Table").Rows(lRef).Delete()
         RefreshPropertiesTable()
 
 
@@ -530,7 +532,7 @@ Public Class Form1
 
     Private Sub Test(sender As Object, e As EventArgs) Handles TextBoxFilter.TextChanged
 
-        FilterDataGridView(TextBoxFilter.Text, DataSet1.Tables("Sections Table"))
+        FilterDataGridView(TextBoxFilter.Text, DataSetStaadProperties.Tables("Sections Table"))
 
     End Sub
 
