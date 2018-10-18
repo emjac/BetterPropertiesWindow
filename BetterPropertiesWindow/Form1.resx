@@ -448,13 +448,13 @@
     <value>2</value>
   </data>
   <data name="TextBoxAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 1373</value>
+    <value>221, 1373</value>
   </data>
   <data name="TextBoxAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
   </data>
   <data name="TextBoxAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 31</value>
+    <value>297, 31</value>
   </data>
   <data name="TextBoxAdd.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -3943,9 +3943,6 @@
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>Manual</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Awesome Staad Helper</value>

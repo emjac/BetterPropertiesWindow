@@ -505,28 +505,27 @@ Public Class Form1
 
     Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
 
-        Dim lRef As VariantType
-        Dim iCOunt As Double
+        'Deletes a section property 
 
-        iCOunt = prop.GetSectionPropertyCount()
+        Dim lRef As VariantType
+        Dim iBeamList() As Integer
 
         lRef = DataGridViewSection.CurrentRow.Cells(0).Value
-        Dim iDeleteSuccess As Integer
+        prop.GetSectionPropertyAssignedBeamCount(lRef)
+        ReDim iBeamList(0 To prop.GetSectionPropertyAssignedBeamCount(lRef) - 1)
+        prop.GetSectionPropertyAssignedBeamList(lRef, iBeamList)
 
-        prop.AssignBeamProperty(31122, 398)
+        For iBeam As Integer = 0 To (iBeamList.Length - 1)
 
-        iDeleteSuccess = prop.DeleteProperty(lRef)
+            'The section property must be removed from the beams to which it is assigned before deleting the property itself or the property persists
+            'and once the program re-opens the property is still present
+            prop.RemovePropertyFromBeam(iBeamList(iBeam))
 
-        Dim sName As String
-        sName = prop.GetBeamSectionName(31122)
+        Next
 
-        iCOunt = prop.GetSectionPropertyCount()
+        prop.DeleteProperty(lRef)
 
-        DataSetStaadProperties.Tables("Sections Table").Rows(lRef).Delete()
         RefreshPropertiesTable()
-
-
-
 
     End Sub
 
