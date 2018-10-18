@@ -548,6 +548,9 @@ Public Class Form1
 
     End Sub
 
+    Private Sub TextBoxAdd_TextChanged(sender As Object, e As EventArgs) Handles TextBoxAdd.TextChanged
+
+    End Sub
 End Class
 
 
