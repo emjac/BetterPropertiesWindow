@@ -479,6 +479,28 @@ Public Class Form1
 
     End Sub
 
+    Private Sub CopyNodesAsList()
+
+        'Copies the node numbers for the nodes that are selected to the clipboard
+
+        Dim SelNodesNo As Long = geo.GetNoOfSelectedNodes
+        Dim SelNodes() As Integer
+        Dim NodeString As String = ""
+
+        If SelNodesNo > 0 Then
+            ReDim SelNodes(SelNodesNo - 1)
+            geo.GetSelectedNodes(SelNodes, 1)
+
+            For i = 1 To SelNodesNo - 1
+                NodeString = NodeString & ", " & (SelNodes(i))
+            Next i
+
+            Clipboard.SetText(NodeString)
+
+        End If
+
+    End Sub
+
     Private Sub CopyBeamsAsTable()
 
         'Copies the element numbers for the beams that are selected to the clipboard
@@ -503,7 +525,34 @@ Public Class Form1
 
     End Sub
 
-    Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
+    Private Sub CopyBeamsAsList()
+
+        'Copies the element numbers for the beams that are selected to the clipboard and seperates them with comas
+
+        Dim SelBeamsNo As Long
+        SelBeamsNo = geo.GetNoOfSelectedBeams
+        Dim SelBeams() As Integer
+
+        If SelBeamsNo > 0 Then
+
+            ReDim SelBeams(SelBeamsNo - 1)
+            geo.GetSelectedBeams(SelBeams, 1)
+
+            Dim S As String
+
+            S = CStr(SelBeams(0))
+
+            For i = 1 To SelBeamsNo - 1
+                S = S & ", " & (SelBeams(i))
+            Next i
+
+            Clipboard.SetText(S)
+
+        End If
+
+    End Sub
+
+    Private Sub DeleteButton_Click(sender As Object, e As EventArgs)
 
         'Deletes a section property 
 
@@ -550,6 +599,14 @@ Public Class Form1
 
     Private Sub TextBoxAdd_TextChanged(sender As Object, e As EventArgs) Handles TextBoxAdd.TextChanged
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles CopyBeamNumListButton.Click
+        CopyBeamsAsList()
+    End Sub
+
+    Private Sub CopyNodeNumListButton_Click(sender As Object, e As EventArgs) Handles CopyNodeNumListButton.Click
+        CopyNodesAsList()
     End Sub
 End Class
 

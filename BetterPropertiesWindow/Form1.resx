@@ -119,14 +119,14 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="AssignToSelectedButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>398, 1372</value>
+    <value>199, 713</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="AssignToSelectedButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="AssignToSelectedButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 38</value>
+    <value>105, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="AssignToSelectedButton.TabIndex" type="System.Int32, mscorlib">
@@ -145,19 +145,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AssignToSelectedButton.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="CheckBox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="CheckBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 1370</value>
+    <value>10, 712</value>
   </data>
   <data name="CheckBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="CheckBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 29</value>
+    <value>147, 17</value>
   </data>
   <data name="CheckBox1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -175,16 +175,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CheckBox1.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="DataGridViewSection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 108</value>
+    <value>11, 56</value>
   </data>
   <data name="DataGridViewSection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="DataGridViewSection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>586, 1254</value>
+    <value>293, 652</value>
   </data>
   <data name="DataGridViewSection.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -199,16 +199,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DataGridViewSection.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="BumpButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>398, 1465</value>
+    <value>199, 772</value>
   </data>
   <data name="BumpButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="BumpButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 40</value>
+    <value>105, 23</value>
   </data>
   <data name="BumpButton.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -226,22 +226,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BumpButton.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="CopyNodeNumButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 1641</value>
+    <value>141, 853</value>
   </data>
   <data name="CopyNodeNumButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="CopyNodeNumButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 40</value>
+    <value>126, 23</value>
   </data>
   <data name="CopyNodeNumButton.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="CopyNodeNumButton.Text" xml:space="preserve">
     <value>Copy Node # As Table</value>
+  </data>
+  <data name="CopyNodeNumButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;CopyNodeNumButton.Name" xml:space="preserve">
     <value>CopyNodeNumButton</value>
@@ -253,22 +256,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CopyNodeNumButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="CopyBeamNumButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 1641</value>
+    <value>11, 853</value>
   </data>
   <data name="CopyBeamNumButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="CopyBeamNumButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 40</value>
+    <value>126, 23</value>
   </data>
   <data name="CopyBeamNumButton.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="CopyBeamNumButton.Text" xml:space="preserve">
     <value>Copy Beam # As Table</value>
+  </data>
+  <data name="CopyBeamNumButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;CopyBeamNumButton.Name" xml:space="preserve">
     <value>CopyBeamNumButton</value>
@@ -280,16 +286,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CopyBeamNumButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="TextBoxFileName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 15</value>
-  </data>
-  <data name="TextBoxFileName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>84, 8</value>
   </data>
   <data name="TextBoxFileName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>436, 31</value>
+    <value>220, 20</value>
   </data>
   <data name="TextBoxFileName.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -304,19 +307,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TextBoxFileName.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 21</value>
-  </data>
-  <data name="Label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>12, 11</value>
   </data>
   <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 25</value>
+    <value>60, 13</value>
   </data>
   <data name="Label1.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -334,16 +334,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="TextBoxFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 60</value>
-  </data>
-  <data name="TextBoxFilter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>84, 31</value>
   </data>
   <data name="TextBoxFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>436, 31</value>
+    <value>220, 20</value>
   </data>
   <data name="TextBoxFilter.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -358,7 +355,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TextBoxFilter.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <metadata name="DataSetStaadProperties.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -367,13 +364,10 @@
     <value>True</value>
   </data>
   <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 65</value>
-  </data>
-  <data name="Label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>12, 34</value>
   </data>
   <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 25</value>
+    <value>32, 13</value>
   </data>
   <data name="Label2.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -391,43 +385,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="DeleteButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>398, 1417</value>
-  </data>
-  <data name="DeleteButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="DeleteButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 38</value>
-  </data>
-  <data name="DeleteButton.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="DeleteButton.Text" xml:space="preserve">
-    <value>Delete Section</value>
-  </data>
-  <data name="&gt;&gt;DeleteButton.Name" xml:space="preserve">
-    <value>DeleteButton</value>
-  </data>
-  <data name="&gt;&gt;DeleteButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DeleteButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;DeleteButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="ButtonAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>536, 1515</value>
-  </data>
-  <data name="ButtonAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>268, 738</value>
   </data>
   <data name="ButtonAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 39</value>
+    <value>36, 23</value>
   </data>
   <data name="ButtonAdd.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -445,16 +409,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ButtonAdd.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="TextBoxAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 1522</value>
-  </data>
-  <data name="TextBoxAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>110, 741</value>
   </data>
   <data name="TextBoxAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 31</value>
+    <value>150, 20</value>
   </data>
   <data name="TextBoxAdd.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -469,19 +430,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TextBoxAdd.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="LabelAdd.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="LabelAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 1522</value>
-  </data>
-  <data name="LabelAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>8, 744</value>
   </data>
   <data name="LabelAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 25</value>
+    <value>98, 13</value>
   </data>
   <data name="LabelAdd.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -499,25 +457,88 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LabelAdd.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <metadata name="DataSetAISCProperties.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>345, 17</value>
   </metadata>
+  <data name="CopyBeamNumListButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CopyBeamNumListButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 878</value>
+  </data>
+  <data name="CopyBeamNumListButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="CopyBeamNumListButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 23</value>
+  </data>
+  <data name="CopyBeamNumListButton.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="CopyBeamNumListButton.Text" xml:space="preserve">
+    <value>Copy Beam # As List</value>
+  </data>
+  <data name="CopyBeamNumListButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;CopyBeamNumListButton.Name" xml:space="preserve">
+    <value>CopyBeamNumListButton</value>
+  </data>
+  <data name="&gt;&gt;CopyBeamNumListButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CopyBeamNumListButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CopyBeamNumListButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="CopyNodeNumListButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CopyNodeNumListButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>141, 878</value>
+  </data>
+  <data name="CopyNodeNumListButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="CopyNodeNumListButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 23</value>
+  </data>
+  <data name="CopyNodeNumListButton.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="CopyNodeNumListButton.Text" xml:space="preserve">
+    <value>Copy Node # As List</value>
+  </data>
+  <data name="CopyNodeNumListButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;CopyNodeNumListButton.Name" xml:space="preserve">
+    <value>CopyNodeNumListButton</value>
+  </data>
+  <data name="&gt;&gt;CopyNodeNumListButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CopyNodeNumListButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CopyNodeNumListButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>12, 25</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>640, 1690</value>
+    <value>320, 905</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3942,7 +3963,7 @@
     <value>1584, 107</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Awesome Staad Helper</value>

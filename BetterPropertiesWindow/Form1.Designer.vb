@@ -34,11 +34,12 @@ Partial Class Form1
         Me.TextBoxFilter = New System.Windows.Forms.TextBox()
         Me.DataSetStaadProperties = New System.Data.DataSet()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.DeleteButton = New System.Windows.Forms.Button()
         Me.ButtonAdd = New System.Windows.Forms.Button()
         Me.TextBoxAdd = New System.Windows.Forms.TextBox()
         Me.LabelAdd = New System.Windows.Forms.Label()
         Me.DataSetAISCProperties = New System.Data.DataSet()
+        Me.CopyBeamNumListButton = New System.Windows.Forms.Button()
+        Me.CopyNodeNumListButton = New System.Windows.Forms.Button()
         CType(Me.DataGridViewSection, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSetStaadProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSetAISCProperties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -116,12 +117,6 @@ Partial Class Form1
         resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
         '
-        'DeleteButton
-        '
-        resources.ApplyResources(Me.DeleteButton, "DeleteButton")
-        Me.DeleteButton.Name = "DeleteButton"
-        Me.DeleteButton.UseVisualStyleBackColor = True
-        '
         'ButtonAdd
         '
         resources.ApplyResources(Me.ButtonAdd, "ButtonAdd")
@@ -142,14 +137,27 @@ Partial Class Form1
         '
         Me.DataSetAISCProperties.DataSetName = "NewDataSet"
         '
+        'CopyBeamNumListButton
+        '
+        resources.ApplyResources(Me.CopyBeamNumListButton, "CopyBeamNumListButton")
+        Me.CopyBeamNumListButton.Name = "CopyBeamNumListButton"
+        Me.CopyBeamNumListButton.UseVisualStyleBackColor = True
+        '
+        'CopyNodeNumListButton
+        '
+        resources.ApplyResources(Me.CopyNodeNumListButton, "CopyNodeNumListButton")
+        Me.CopyNodeNumListButton.Name = "CopyNodeNumListButton"
+        Me.CopyNodeNumListButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.CopyNodeNumListButton)
+        Me.Controls.Add(Me.CopyBeamNumListButton)
         Me.Controls.Add(Me.LabelAdd)
         Me.Controls.Add(Me.TextBoxAdd)
         Me.Controls.Add(Me.ButtonAdd)
-        Me.Controls.Add(Me.DeleteButton)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TextBoxFilter)
         Me.Controls.Add(Me.Label1)
@@ -189,9 +197,10 @@ Partial Class Form1
     Friend WithEvents TextBoxFilter As TextBox
     Friend WithEvents DataSetStaadProperties As DataSet
     Friend WithEvents Label2 As Label
-    Friend WithEvents DeleteButton As Button
     Friend WithEvents ButtonAdd As Button
     Friend WithEvents TextBoxAdd As TextBox
     Friend WithEvents LabelAdd As Label
     Friend WithEvents DataSetAISCProperties As DataSet
+    Friend WithEvents CopyBeamNumListButton As Button
+    Friend WithEvents CopyNodeNumListButton As Button
 End Class
